@@ -1,0 +1,85 @@
+# Lab 2: Lab Exercises (Monday)
+
+# 1 - Use the dataset entitled beaver1 from the datasets within R. Using the 
+# summary() command, provide the mean body temperature of the beaver as a comment 
+# after your code.
+#answer:
+attach(beaver1)
+beaver1
+summary(beaver1)
+#Mean   :36.86
+
+# 2 - Use the same dataset and provide the mean body temperature of the beaver, 
+# rounded to 4 decimal places, as a comment after your code.
+summary(beaver1)
+round(mean(depth), digits = 4)
+#[1] 311.371
+
+# 3 - Create a histogram for the variable temp, include an appropriate main title. 
+# Main title could be something along the lines of "Frequency of beaver1 body 
+# temperature". You may change the x-axis label from temp to Temperature. While
+# it is not necessary, you may choose to change the orientation of the digits
+# on the y-axis with the las command.
+min(temp)
+max(temp)
+hist(temp)
+histo<-hist(temp, main="Frequency of Beaver1 Body Temperature")
+plot(histo)
+# 4 - Based on the histogram created, how many classes can you count?
+
+# Ans: 7
+
+# 5 - Save this data frame as a csv file. You should see the beaver1.csv file in 
+# your P drive (working directory) once it has been saved.
+write.csv(df,"beaver1.csv")
+
+# 6 - Create four vectors: First column vector will be four colors, second 
+# column vector will be four discrete numbers, third column vector will be 
+# four continuous numbers to 4 decimal places, & fourth column vector will be 
+# four months of the year. You can make up the data, and label the vectors as 
+# v1, v2, v3, v4.
+v1<-c("red","black","green","blue")
+v2<-c(1,2,3,4)
+v3<-c(1.9999,2.9999,3.9999,4.9999)
+v4<-c("Jan","Feb","Mar","Apr")
+
+# 7 - Use the 4 vectors in #6 to create a data frame. Call it df1.
+df1<-data.frame(v1,v2,v3,v4)
+
+# 8 - You realized that you forgot to include a column of data. Start by creating
+# the fifth column vector (v5) with four favorite animals. Then create a new
+# data frame with vectors v1 to v5. Call this data frame df2.
+v5<-c("cat","dog","bird","rat")
+df2<-data.frame(v1,v2,v3,v4,v5)
+print(df2)
+# 9 - Find the average of variable v2. Indicate the average as a comment.
+mean(v2,na.rm = TRUE)
+#2.5
+
+# 10 - Find the average of variable v3. Round to 3 decimal places. 
+# Indicate the average as a comment.
+mean(v3,na.rm = TRUE)
+#3.4999
+
+# 11 - Rename the column headers to represent the data.
+colnames(df2)<-c("colors","discrete number","continuous number","months","animals")
+df2
+
+# 12 - Write the data frame created in #11 as a csv file. Name it as you wish. Do 
+# not forget to include .csv in the file name.
+write.csv(df2, "lab2_df2.csv")
+
+# 13 - Provide a relative frequency table for the animal variable using the 
+# table and length commands. If you are having trouble, don't forget to attach 
+# the dataframe created in #11. 
+table(v5)
+count <- table(v5)
+
+# 14 - Create a bar plot using the relative frequency data created in the 
+# previous question. Include appropriate titles.
+rel.freq <- table(v5)/length(v5)
+rel.freq
+
+barplot(rel.freq, main = "Relative Frequency of Animals",
+        xlab="Count", ylab = "Animals", las=1)
+
