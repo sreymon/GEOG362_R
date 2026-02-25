@@ -1,0 +1,27 @@
+mydata <- read.csv("HousingPrices.csv")
+mydata$NeighborValue <- round(mydata$NeighborValue, digits = 0)
+
+# Question 1:
+mean(mydata$NeighborValue)
+# mean: 488211$
+mode <- function(x) {
+  uni <- unique(x)
+  uni[which.max(tabulate(match(x, uni)))]
+}
+mode(mydata$NeighborValue)
+# mode: 483037$
+min(mydata$NeighborValue)
+# min: 273780$
+max(mydata$NeighborValue)
+# max: 826280$
+max(mydata$NeighborValue) - min(mydata$NeighborValue)
+# range: 552500$
+
+#Question 2:
+round(sd(mydata$SalePrice, na.rm = TRUE), digits=0)
+# standard deviation with No NA values: 174585$
+round(mean(mydata$SalePrice, na.rm = TRUE), digits=0)
+# standard deviation with NA values replaced with mean of the column: 519392$
+
+#stopped at q2 written answer box
+
